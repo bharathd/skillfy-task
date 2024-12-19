@@ -1,20 +1,21 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+"use client";
 
-const SideNav = () => {
-  const navigate = useNavigate();
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+const Sidenav = () => {
+  const router = useRouter();
   const [activeItem, setActiveItem] = useState("Overview");
 
   const menuItems = [
     { label: "Overview", route: "/" },
-    { label: "Post a Job", route: "" },
-    { label: "Search CV", route: "" },
-    { label: "My Jobs", route: "" },
-    { label: "My Searches", route: "" },
-    { label: "My Candidates", route: "" },
-    { label: "Billing & Invoices", route: "" },
+    { label: "Post a Job", route: "/post-job" },
+    { label: "Search CV", route: "/search-cv" },
+    { label: "My Jobs", route: "/my-jobs" },
+    { label: "My Searches", route: "/my-searches" },
+    { label: "My Candidates", route: "/my-candidates" },
+    { label: "Billing & Invoices", route: "/billing-invoices" },
     { label: "Settings", route: "/settings" },
-    { label: "Support", route: "" },
+    { label: "Support", route: "/support" },
   ];
 
   return (
@@ -30,7 +31,7 @@ const SideNav = () => {
             }`}
             onClick={() => {
               setActiveItem(item.label);
-              navigate(item.route);
+              router.push(item.route);
             }}
           >
             {item.label}
@@ -41,4 +42,4 @@ const SideNav = () => {
   );
 };
 
-export default SideNav;
+export default Sidenav;
